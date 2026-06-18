@@ -1,5 +1,3 @@
-
-
 import os
 import sys
 import pandas as pd
@@ -33,7 +31,10 @@ def create_training_tensors(pairs_csv, output_dir):
         s2_patch = read_tif(row["s2_patch_path"])
         s1_patch = read_tif(row["s1_patch_path"])
 
-        s2_patch = add_indices(s2_patch)
+        if s2_patch.shape[0] == 10:
+            s2_patch = add_indices(s2_patch)
+        elif s2_patch.shape[0] != 14:
+            raise ValueError(f"Unexpected S2 channel count: {s2_patch.shape[0]}")
 
         s2_tensor = torch.tensor(s2_patch, dtype=torch.float32)
         s1_tensor = torch.tensor(s1_patch, dtype=torch.float32)
