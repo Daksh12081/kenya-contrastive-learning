@@ -13,7 +13,7 @@ training_tensors/
 outputs/
 checkpoints/
 
-# env
+# Environment
 .env
 venv/
 croma_env/

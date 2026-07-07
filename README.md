@@ -1,31 +1,76 @@
-Kenya Contrastive Learning
+# Kenya Forest Classification using CROMA
 
-Objective:
+## Overview
 
-Cross-modal representation learning between Sentinel-1 and Sentinel-2 imagery.
+This repository contains the preprocessing and downstream training pipeline for land cover classification using the pretrained CROMA foundation model on the SEN12MS dataset.
 
-Current Architecture:
+## Dataset
 
-- ConvNeXt dual encoder
+- Dataset: SEN12MS Spring
+- Total Samples: 38,755
+- Modalities:
+  - Sentinel-1 SAR
+  - Sentinel-2 Optical
 
-- 14-channel Sentinel-2 input
+## Classes
 
-- 3-channel Sentinel-1 input
+| ID | Class |
+|----|----------------|
+|0|Forest|
+|1|Shrub|
+|2|Crop|
+|3|Grass|
+|4|NonVegetation|
 
-- Projection heads
+## Pipeline
 
-- InfoNCE loss
+SEN12MS TIFFs
 
-Dataset:
+↓
 
-- 637 matched S1-S2 pairs
+Dataset Loader
 
-- 256x256 patches
+↓
 
-Training:
+Training Tensors
 
-python train.py
+↓
 
-Evaluation:
+CROMA Encoder
 
-python evaluate_embeddings.py
+↓
+
+Embeddings
+
+↓
+
+Multiclass Classifier
+
+## Repository Structure
+
+```
+datasets/
+scripts/
+embeddings/
+downstream/
+configs/
+```
+
+## Requirements
+
+```
+pip install -r requirements.txt
+```
+
+## Current Status
+
+- Dataset preprocessing ✅
+- Tensor generation ✅
+- GCS upload ✅
+- Downstream classifier ✅
+- Embedding generation ⏳
+
+
+
+
+
