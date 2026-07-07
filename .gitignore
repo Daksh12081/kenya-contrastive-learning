@@ -1,0 +1,19 @@
+.DS_Store
+__pycache__/
+*.pyc
+.ipynb_checkpoints/
+
+# Large data / checkpoints
+*.pt
+*.pth
+*.ckpt
+*.tar.gz
+ROIs1158_spring/
+training_tensors/
+outputs/
+checkpoints/
+
+# env
+.env
+venv/
+croma_env/
